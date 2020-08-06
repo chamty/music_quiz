@@ -41,7 +41,7 @@ if (!empty($_POST)) {
           <?php endif; ?>
         </div>
         <div class="quiz">
-          <div class="question"><span class="qes">Q. </span>次のうち、木管楽器なのは？（複数選択可）</div>
+          <div class="question"><span class="qes">Q. </span>次のうち、木管楽器なのは？（複数の場合あり）</div>
           <input type="checkbox" name="answer_2[]" value="サックス" <?php if ($_POST['answer_2'][0] == "サックス") echo checked ?>>サックス
           <input type="checkbox" name="answer_2[]" value="トロンボーン" <?php if ($_POST['answer_2'][0] == "トロンボーン" || $_POST['answer_2'][1] == "トロンボーン") echo checked ?>>トロンボーン
           <input type="checkbox" name="answer_2[]" value="フルート" <?php if ($_POST['answer_2'][0] == "フルート" || $_POST['answer_2'][1] == "フルート" || $_POST['answer_2'][2] == "フルート") echo checked ?>>フルート
@@ -72,7 +72,7 @@ if (!empty($_POST)) {
             <p class="error">※１つ選択してください。</p>
           <?php endif; ?>
         </div>
-        <input type="submit" value="回答する">
+        <input class="button" type="submit" value="回答する">
       </form>
       </div>
   </div>

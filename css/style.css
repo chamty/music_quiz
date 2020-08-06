@@ -4,10 +4,11 @@
   background: pink;
   padding: 10px 40px 40px 40px;
   border-radius: 10px;
+  color: #333;
 }
 
 .quiz {
-  margin: 30px 0;
+  margin: 50px 0;
 }
 
 .question {
@@ -39,4 +40,19 @@ input {
   color: red;
   display: inline-block;
   margin: 0;
+}
+
+.result {
+  margin: 10px 0;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.ans {
+  font-weight: normal;
+  color: red;
+}
+
+.button {
+  margin: 10px 0;
 }
