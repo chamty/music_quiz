@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['answer'])) {
+  header('Location: index.php');
+  exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -13,8 +22,8 @@
       <form action="submit.php" method="get">
         <div class="quiz">
           <div class="question"><span class="qes">Q. </span>「ピアノ」の正式名称は？</div>
-          <label for="answer_1">回答：<?php print(htmlspecialchars($_POST['answer_1'], ENT_QUOTES)); ?></label>
-          <?php if($_POST['answer_1'] === 'ピアノフォルテ'): ?>
+          <label for="answer_1">回答： <?php print(htmlspecialchars($_SESSION['answer']['answer_1'], ENT_QUOTES)); ?></label>
+          <?php if($_SESSION['answer']['answer_1'] === 'ピアノフォルテ'): ?>
             <p class="correct">正解！</p>
           <?php else: ?>
             <p class="miss">不正解！</p>
@@ -23,23 +32,12 @@
         <div class="quiz">
           <div class="question"><span class="qes">Q. </span>木管楽器なのは？</div>
           <?php $answer_2 = $_POST['answer_2']; ?>
-          <label for="answer_1">回答：
-            <?php 
-              $ok == 0;
-              $ng == 0;
-
-              foreach ($answer_2 as $wood) {
-                print($wood . ' ');
-                if ($wood === 'サックス' || $wood === 'フルート') {
-                  $ok++;
-                } else {
-                  $ng++;
-                }
-            }
-            ?>
+          <label for="answer_2">回答：
+          <?php print(htmlspecialchars($_SESSION['answer']['answer_2'][0], ENT_QUOTES)); ?>
+          <?php print(htmlspecialchars($_SESSION['answer']['answer_2'][1], ENT_QUOTES)); ?>
+          <?php print(htmlspecialchars($_SESSION['answer']['answer_2'][2], ENT_QUOTES)); ?>
           </label>
-          
-          <?php if($ok == 2 && $ng == 0): ?>
+          <?php if($_SESSION['answer']['answer_2'][0] === 'サックス' && $_SESSION['answer']['answer_2'][1] === 'フルート'): ?>
             <p class="correct">正解！</p>
           <?php else: ?>
             <p class="miss">不正解！</p>
@@ -47,14 +45,14 @@
         </div>
         <div class="quiz">
           <div class="question"><span class="qes">Q. </span>一番大きいのは？</div>
-          <label for="answer_1">回答：<?php print(htmlspecialchars($_POST['answer_3'], ENT_QUOTES)); ?></label>
-          <?php if($_POST['answer_3'] === 'コントラバス'): ?>
+          <label for="answer_3">回答： <?php print(htmlspecialchars($_SESSION['answer']['answer_3'], ENT_QUOTES)); ?></label>
+          <?php if($_SESSION['answer']['answer_3'] === 'コントラバス'): ?>
             <p class="correct">正解！</p>
           <?php else: ?>
             <p class="miss">不正解！</p>
           <?php endif; ?>
         </div>
-        <input type="submit" value="回答する">
+        <input type="button" value="やり直し" onclick="location.href='index.php'">
       </div>
       </form>
   </div>
