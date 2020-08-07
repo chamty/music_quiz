@@ -23,13 +23,13 @@ $clear = 0;
       <div class="quiz_table">
       <form action="submit.php" method="get">
         <div class="quiz">
-          <div class="question"><span class="qes">Q. </span>「ピアノ」の正式名称は？</div>
+          <div class="question"><span class="qes">Q. </span>「ドレミファソラシド」って何語？</div>
           <label for="answer_1">回答： <?php print(htmlspecialchars($_SESSION['answer']['answer_1'], ENT_QUOTES)); ?></label>
-          <?php if($_SESSION['answer']['answer_1'] === 'ピアノフォルテ'): ?>
+          <?php if($_SESSION['answer']['answer_1'] === 'イタリア語' || $_SESSION['answer']['answer_1'] === 'イタリア'): ?>
             <?php $clear++; ?>
             <p class="correct">正解！</p>
           <?php else: ?>
-            <p class="miss">不正解！ <span class="ans">正解は…「ピアノフォルテ」</span></p>
+            <p class="miss">不正解！ <span class="ans">正解は…「イタリア語」</span></p>
           <?php endif; ?>
         </div>
         <div class="quiz">
@@ -43,6 +43,8 @@ $clear = 0;
           <?php if($_SESSION['answer']['answer_2'][0] === 'サックス' && $_SESSION['answer']['answer_2'][1] === 'フルート'): ?>
             <?php $clear++; ?>
             <p class="correct">正解！</p>
+          <?php elseif ($_SESSION['answer']['answer_2'][0] === 'サックス' || $_SESSION['answer']['answer_2'][0] === 'フルート' || $_SESSION['answer']['answer_2'][1] === 'フルート'): ?> 
+            <p class="miss">おしい！ <span class="ans">正解は…「サックス」と「フルート」</span></p>
           <?php else: ?>
             <p class="miss">不正解！ <span class="ans">正解は…「サックス」と「フルート」</span></p>
           <?php endif; ?>

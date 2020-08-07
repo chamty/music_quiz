@@ -34,7 +34,7 @@ if (!empty($_POST)) {
       <div class="quiz_table">
       <form action="" method="post">
         <div class="quiz">
-          <div class="question"><span class="qes">Q. </span>「ピアノ」の正式名称は？</div>
+          <div class="question"><span class="qes">Q. </span>「ドレミファソラシド」って何語？</div>
           <label for="answer_1">回答：</label><input type="text" id="answer_1" name="answer_1" value="<?php print(htmlspecialchars($_POST['answer_1'], ENT_QUOTES)); ?>">
           <?php if ($error['answer_1'] === 'blank'): ?>
             <p class="error">※回答を入力してください。</p>
